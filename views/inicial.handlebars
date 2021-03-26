@@ -1,0 +1,44 @@
+<div id="ini"></div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el:'#ini',
+            data:{
+
+            },
+            template: `
+                <div class="container">
+                    <hr />
+                    <div class="form-tofo form-group">
+                        <p></p>
+                        <a href="/novatarefa"><button type="button" class="btn btn-primary btn-lg"> <span class="glyphicon glyphicon-edit"></span></button></a>
+                        <a href="/calendario"><button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-calendar"></span></button></a>
+                        <a href="/"><img src="images/dinoco.jpg" alt="some text" width=100 height=100></a>
+                        <p></p>
+                        <label><h4>Bem vindo, {{user}}</h4>
+                        <a href="/sair"><spam>logout</spam></a>
+
+                    </div>
+                    {{#each Tarefas}}
+                    <div class="card card-transition">
+                        <a href="/edit/{{_id}}"><div class="card-body" v-on:mouseover="">
+                            <h4>{{titulo}}</h4>
+                            <div align="center">
+                                <spam>Data: {{data}}</spam><br>
+                                <spam>Inicio: {{periodo_ini}} </spam><br>
+                                <spam>Fim: {{periodo_fim}} </spam><br>
+                                <spam>Tipo de Evento: {{tipo_cal}}</spam>
+                            </div>
+                            <spam>{{descricao}}</spam><br>
+                            <form action="/delete" method="POST">
+                                <input type="hidden" name="id" value="{{_id}}">
+                                <button type="submit" class="btn btn-danger btn-lg float-right"><span class="glyphicon glyphicon-remove-circle"></span></button>
+                            </form>
+                        </spam></a>
+                    </div>
+                    {{else}}
+                        <h4>Não Existem notas Registradas!</h4>
+                    {{/each}}`
+
+        })
+    </script>

@@ -1,0 +1,89 @@
+{{#each erros}}
+    <div class="alert alert-danger"> {{text}}</div>
+{{/each}}
+<form action="/editNote" method="POST">
+    <div id="app"></div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            new Vue({
+                el:'#app',
+                data: {
+                    checkedData: false,
+                    checkedInicio: false
+                },
+                template: `                    
+                    <div class="container">
+                        <h1>Editar Nota <a href="/"><img src="images/dinoco.jpg" alt="Dinoco" width=100 height=100> </h1></a>
+                        <input type="hidden" name="id" value="{{nota._id}}">
+                        <hr />
+                        <div class="form-tofo form-group">
+                            <p>
+                                <input placeholder="Título Nota" type="text" name="author"
+                                class="form-control" value="{{nota.titulo}}" />
+                            </p>
+
+                            <p>
+                                <textarea placeholder="Digite Aqui" name="message"
+                                class="form-control" >{{nota.descricao}}</textarea>
+                            </p>
+
+                            <p></p>
+
+                            <label class="switch">
+                            <input type="checkbox" v-model="checkedData">
+                            <span class="slider round">Data</span>
+                            </label>
+                            <input type="date" id="date" v-if="checkedData" name="date" value="{{nota.data}}">
+
+                            <p></p>
+                        
+                            <label class="switch">
+                            <input type="checkbox" v-model="checkedInicio">
+                            <span class="slider round">Começa</span>
+                            </label>
+                            <input type="time" id="time" v-if="checkedInicio" name="time" value="{{nota.periodo_ini}}">
+
+                            <p></p>
+
+                            <label>Termina</label>
+                            <input type="time" id="timef" v-if="checkedInicio" name="timef"  value="{{nota.periodo_fim}}">
+
+                            <p></p>
+
+                            <label for="repete">Repete</label>
+                            <select name="tempo" id="tempo">
+                                <option value="nunca" {{repetir.Nunca}}>Nunca</option>
+                                <option value="semana" {{repetir.Semana}}>A cada semana</option>
+                                <option value="2semana" {{repetir.Semana2}}>A cada 2 semanas</option>
+                                <option value="mes" {{repetir.Mes}}>Mensalmente</option>
+                            </select>
+
+                            <p></p>
+
+                            <label for="calendario">Calendário</label>
+                            <select name="dia" id="dia">                                
+                                <option value="Pessoal" {{calend.Pes}}>Pessoal</option>
+                                <option value="Academia" {{calend.Acad}}>Academia</option>
+                                <option value="Trabalho" {{calend.Trab}}>Trabalho</option>
+                                <option value="Faculdade" {{calend.Facul}}>Faculdade</option>
+                            </select>
+
+                            <p></p>
+                            
+                            <label for="lembrete">Lembrete</label>
+                            <select name="lbt" id="lbt">                                
+                                <option value="hora" {{lemb.Hora}}>Na hora do evento</option>
+                                <option value="5min" {{lemb.Min5}}>5 minutos antes</option>
+                                <option value="10min" {{lemb.Min10}}>10 minutos antes</option>
+                                <option value="30min" {{lemb.Min30}}>30 minutos antes</option>
+                                <option value="1hr" {{lemb.Antes1h}}>1 hora antes</option>
+                            </select>
+
+                            <p></p>
+                            
+                            <button type="submit" class="btn btn-primary">Editar</button>
+                            
+                            </div>`
+            })
+        </script>        
+</form>

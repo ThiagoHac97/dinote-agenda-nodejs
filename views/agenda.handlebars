@@ -1,0 +1,93 @@
+{{#each erros}}
+    <div class="alert alert-danger"> {{text}}</div>
+{{/each}}
+<form action="/newnote" method="POST">
+    <div id="app"></div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            new Vue({
+                el:'#app',
+                data: {
+                    checkedData: false,
+                    checkedInicio: false
+                },
+                template: `
+                    <div class="container">
+                        <h1>Nova Nota <img src="images/dinoco.jpg" alt="some text" width=100 height=100> </h1>
+                        
+                        <hr />
+                        <div class="form-tofo form-group">
+                            <p>
+                                <input placeholder="Título Nota" type="text" name="author"
+                                class="form-control" />
+                            </p>
+
+                            <p>
+                                <textarea placeholder="Digite Aqui" name="message"
+                                class="form-control"> </textarea>
+                            </p>
+
+                            <p></p>
+
+                            <label class="switch">
+                            <input type="checkbox" v-model="checkedData">
+                            <span class="slider round">Data</span>
+                            </label>
+                            <input type="date" id="date" v-if="checkedData" name="date" value="YYYY-MM-DD"><label></label>
+
+                            <p></p>
+                        
+                            <label class="switch">
+                            <input type="checkbox" v-model="checkedInicio" >
+                            <span class="slider round">Começa</span>
+                            </label >
+                            <input type="time" id="time" v-if="checkedInicio" name="time">
+
+                            <p></p>
+
+                            <label>Termina</label>
+                            <input type="time" id="timef" v-if="checkedInicio" name="timef">
+
+                            <p></p>
+
+                            <label for="repete">Repete</label>
+                            <select name="tempo" id="tempo">
+                            <option value="nunca">Nunca</option>
+                            <option value="semana">A cada semana</option>
+                            <option value="2semana">A cada 2 semanas</option>
+                            <option value="mes">Mensalmente</option>
+                            </select>
+
+                            <p></p>
+
+                            <label for="calendario">Calendário</label>
+                            <select name="dia" id="dia">
+                            <option value="Pessoal">Pessoal</option>
+                            <option value="Academia">Academia</option>
+                            <option value="Trabalho">Trabalho</option>
+                            <option value="Faculdade">Faculdade</option>
+                            </select>
+
+                            <p></p>
+
+                            <label for="lembrete">Lembrete</label>
+                            <select name="lbt" id="lbt">
+                            <option value="hora">Na hora do evento</option>
+                            <option value="5min">5 minutos antes</option>
+                            <option value="10min">10 minutos antes</option>
+                            <option value="30min">30 minutos antes</option>
+                            <option value="1hr">1 hora antes</option>
+                            </select>
+
+                            <p></p>
+                            
+                            <button type="submit" class="btn btn-primary">Adicionar</button>
+                            
+                            
+                            </div>`
+                            
+
+
+            })
+        </script>
+</form>

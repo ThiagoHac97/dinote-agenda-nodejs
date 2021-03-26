@@ -1,0 +1,21 @@
+.card-transition {
+    text-decoration: none;
+}
+
+.card-transition a:hover{
+    cursor: pointer;
+    background: #363636;
+    color: #ffffff;
+    transition: all,1s;
+    opacity: 0.5;
+    text-decoration: none;
+    -webkit-background-composite: initial;
+}
+
+.card-transition a {
+    margin: 0;
+    border: none;
+    padding: 10px;
+    background: #ffffff;
+    border: 1px solid #1C1C1C;
+}

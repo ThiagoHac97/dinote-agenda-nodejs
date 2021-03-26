@@ -1,0 +1,43 @@
+{{#each erros}}
+    <div class="alert alert-danger"> {{text}}</div>
+{{/each}}
+<form action="/signup" method="POST">
+    <div id="app"></div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script>
+            new Vue({
+                el:'#app',
+                template: `
+                    <div class="container">
+                        <h1>Cadastro <a href="/"><img src="images/dinoco.jpg" alt="some text" width=100 height=100> </h1></a>
+
+                        <hr />
+
+                        <div class="form-tofo form-group">
+                            <p>
+                                <input placeholder="Nome de Usuário" type="text" name="username"
+                                class="form-control" />
+                            </p>
+                            <p>
+                            <input placeholder="E-mail" type="text" name="email"
+                                class="form-control" />
+                            </p>
+                            <p>
+                                <input placeholder="Senha" type="password" name="senha"
+                                class="form-control" />
+                            </p>
+
+                            <p>
+                                <input placeholder="Confirme sua senha" type="password" name="csenha"
+                                class="form-control" />
+                            </p>
+
+                            
+                            <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            
+                            
+                            </div>`
+                            
+            })
+        </script>
+</form>
